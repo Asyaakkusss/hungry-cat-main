@@ -6,12 +6,11 @@ import React from 'react';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login/Login';
 import Preferences from './components/Preferences';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'; 
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'; 
 import useToken from './components/App/useToken';
-import Stack from '@mui/material/Stack';
-import Chip from '@mui/material/Chip';
-import TextField from '@mui/material/TextField';
 import soundFile from './components/Domestic-cat-purring-and-meowing-sound-effect.mp3';
+import { useHistory } from 'react-router-dom';
+
 
 function App() {
     const { token, setToken } = useToken();
@@ -22,6 +21,7 @@ function App() {
     const [numClicks, setNumClicks] = useState(1);
     const [levelTracker, setLevelTracker] = useState(1);
     const [customTime, setCustomTime] = useState(0); 
+    const history = useHistory();
 
     const sound = new Audio(soundFile);
 
@@ -90,17 +90,19 @@ function App() {
     // Handler to check when time is over
     const handleTimerIsDone = (duration) => {
       if (time === 0 && selectedTime === duration * 60 * 1000) {
+        console.log(selectedTime); 
         sound.play(); 
         // Timer is over for the specified duration
         // Increases levelTracker
         setLevelTracker(prevLevel => prevLevel + 1);
         
-        //alert("Congratulations. You are now level " + (levelTracker + 1) + "!");
-        
       }
     };
 
-    //useEffect for cat noise 
+    const handleLogout = () => {
+      setToken(0); 
+      return <Login/>
+    }; 
     
     // UseEffect for HandleTimer
     useEffect(() => {
@@ -119,9 +121,16 @@ function App() {
         <div className="App">
           <div className="top-bar">
             <div></div>
+            <div className = "level-container">
             <Box className="level-box">
               Level: {levelTracker + 1}
             </Box>
+            </div>
+            <div style={{ marginRight: 'auto' }} auto className = "logout-container">
+            <Box className="logout-button">
+              <Button onClick={handleLogout}>Logout</Button>
+            </Box>
+            </div>
             <div className="title-container">
           <h1>Tomato Paws Timer</h1>
             </div>
@@ -162,4 +171,4 @@ function App() {
 
 }
 
-export default App;
+export default withRouter(App);
