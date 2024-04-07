@@ -159,10 +159,10 @@ function App() {
           <div className="wrapper">
             {/* Your time options and other content here */}
             <div className="time-options">
-              <Box className="time-option-box"><Button onClick={() => howMuchTime(60)}>60 Minutes</Button></Box>
-              <Box className="time-option-box"><Button onClick={() => howMuchTime(20)}>20 Minutes</Button></Box>
-              <Box className="time-option-box"><Button onClick={() => howMuchTime(5)}>5 Minutes</Button></Box>
-              <Box className="time-option-box"><Button onClick={() => howMuchTime(1)}>1 Minute</Button></Box>
+              <Box className="time-option-box"><Button onClick={() => howMuchTime(60)}>Start: 60 Minutes</Button></Box>
+              <Box className="time-option-box"><Button onClick={() => howMuchTime(20)}>Start: 20 Minutes</Button></Box>
+              <Box className="time-option-box"><Button onClick={() => howMuchTime(5)}>Start: 5 Minutes</Button></Box>
+              <Box className="time-option-box"><Button onClick={() => howMuchTime(1)}>Start: 1 Minute</Button></Box>
             </div>
           </div>
         </div>
