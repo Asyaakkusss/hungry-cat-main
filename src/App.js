@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import useToken from './components/App/useToken';
 import soundFile from './components/Domestic-cat-purring-and-meowing-sound-effect.mp3';
 import { useHistory } from 'react-router-dom';
-
+import Challenges from './Challenges'; 
 
 function App() {
     const { token, setToken } = useToken();
@@ -103,6 +103,10 @@ function App() {
       setToken(0); 
       return <Login/>
     }; 
+
+    const handleChallenges = () => {
+      return <Challenges/>
+    }; 
     
     // UseEffect for HandleTimer
     useEffect(() => {
@@ -126,11 +130,16 @@ function App() {
               Level: {levelTracker + 1}
             </Box>
             </div>
-            <div style={{ marginRight: 'auto' }} auto className = "logout-container">
+            <div style={{ marginRight: 'left' }} auto className = "logout-container">
             <Box className="logout-button">
               <Button onClick={handleLogout}>Logout</Button>
             </Box>
             </div>
+            <div style = {{marginRight: 'auto'}} auto className = "challenge-container">
+              <Box>
+                <Button onClick={handleChallenges}>Challenges</Button>
+              </Box>
+              </div>
             <div className="title-container">
           <h1>Tomato Paws Timer</h1>
             </div>
