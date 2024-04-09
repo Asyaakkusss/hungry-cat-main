@@ -1,8 +1,14 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('database_name', 'username', 'password', {
-    host: 'localhost',
-    dialect: 'postgres'
+const sequelize = new Sequelize('tomatopawsinitial', 'username', 'password', {
+    host: 'tomatopaws.cnmmsigu82g0.us-east-2.rds.amazonaws.com',
+    dialect: 'postgres',
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
 });
 
 async function testConnection() {
