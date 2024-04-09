@@ -6,7 +6,7 @@ const User = require('./models/User');
 const app = express();
 app.use(bodyParser.json());
 
-app.post('/register', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
@@ -34,3 +34,4 @@ app.post('/register', async (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log('Server running on port ${PORT}'));
+
